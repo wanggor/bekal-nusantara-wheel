@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bekal Nusantara - Putar & Menang!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-red': '#880001',
+                        'brand-gold': '#FDCF12'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        
+        .wheel {
+            transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .prize-segment {
+            transform-origin: 50% 50%;
+        }
+        
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .animate-spin-slow {
+            animation: spin 20s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-brand-red via-red-800 to-brand-red min-h-screen">
+    <!-- Header -->
+    <header class="bg-white/10 backdrop-blur-sm border-b border-white/20">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center">
+                        <span class="text-brand-red font-bold text-xl">🍽️</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-white">Bekal Nusantara</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="text-white hover:text-brand-gold transition-colors">Menu</a>
+                    <a href="#" class="text-white hover:text-brand-gold transition-colors">Tentang</a>
+                    <a href="#" class="text-white hover:text-brand-gold transition-colors">Kontak</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                Putar & Menang
+                <span class="text-brand-gold">Hadiah Menarik!</span>
+            </h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Setiap pembelian minimal Rp 50.000 berpeluang memenangkan hadiah spektakuler dari Bekal Nusantara
+            </p>
+        </div>
+    </section>
+
+    <!-- Daily Prize Schedule -->
+    <section class="py-8">
+        <div class="container mx-auto px-4">
+            <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                <h3 class="text-3xl font-bold text-white text-center mb-8">🗓️ Jadwal Hadiah Harian</h3>
+                
+                <div class="overflow-x-auto">
+                    <div class="flex space-x-6 pb-4 justify-center min-w-max">
+                        <!-- Today -->
+                        <div class="bg-brand-gold/30 border-2 border-brand-gold rounded-xl p-6 min-w-[200px] text-center transform hover:scale-105 transition-all">
+                            <div class="text-brand-gold font-bold text-lg mb-3">HARI INI</div>
+                            <div class="text-4xl mb-3">🎯</div>
+                            <h4 class="font-bold text-white text-lg">Roda Keberuntungan</h4>
+                            <p class="text-brand-gold text-sm">Berbagai hadiah menarik</p>
+                            <div class="mt-3 bg-brand-gold/20 rounded-lg py-2">
+                                <span class="text-white font-semibold text-sm">AKTIF SEKARANG</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Tomorrow -->
+                        <div class="bg-white/10 border border-white/30 rounded-xl p-6 min-w-[200px] text-center hover:bg-white/20 transition-all">
+                            <div class="text-white/70 font-bold text-lg mb-3">BESOK</div>
+                            <div class="text-4xl mb-3">📱</div>
+                            <h4 class="font-bold text-white text-lg">iPhone 15 Pro</h4>
+                            <p class="text-brand-gold text-sm">1 unit tersedia</p>
+                            <div class="mt-3 bg-white/10 rounded-lg py-2">
+                                <span class="text-white/70 text-sm">Segera hadir</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 3 -->
+                        <div class="bg-white/10 border border-white/30 rounded-xl p-6 min-w-[200px] text-center hover:bg-white/20 transition-all">
+                            <div class="text-white/70 font-bold text-lg mb-3">LUSA</div>
+                            <div class="text-4xl mb-3">💎</div>
+                            <h4 class="font-bold text-white text-lg">Emas 10gr</h4>
+                            <p class="text-brand-gold text-sm">3 unit tersedia</p>
+                            <div class="mt-3 bg-white/10 rounded-lg py-2">
+                                <span class="text-white/70 text-sm">2 hari lagi</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 4 -->
+                        <div class="bg-white/10 border border-white/30 rounded-xl p-6 min-w-[200px] text-center hover:bg-white/20 transition-all">
+                            <div class="text-white/70 font-bold text-lg mb-3">KAMIS</div>
+                            <div class="text-4xl mb-3">🛵</div>
+                            <h4 class="font-bold text-white text-lg">Motor Listrik</h4>
+                            <p class="text-brand-gold text-sm">2 unit tersedia</p>
+                            <div class="mt-3 bg-white/10 rounded-lg py-2">
+                                <span class="text-white/70 text-sm">3 hari lagi</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Day 5 -->
+                        <div class="bg-white/10 border border-white/30 rounded-xl p-6 min-w-[200px] text-center hover:bg-white/20 transition-all">
+                            <div class="text-white/70 font-bold text-lg mb-3">JUMAT</div>
+                            <div class="text-4xl mb-3">💰</div>
+                            <h4 class="font-bold text-white text-lg">Uang Tunai</h4>
+                            <p class="text-brand-gold text-sm">Rp 5.000.000</p>
+                            <div class="mt-3 bg-white/10 rounded-lg py-2">
+                                <span class="text-white/70 text-sm">4 hari lagi</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Weekend -->
+                        <div class="bg-gradient-to-br from-brand-red to-red-700 border-2 border-brand-gold rounded-xl p-6 min-w-[200px] text-center transform hover:scale-105 transition-all">
+                            <div class="text-brand-gold font-bold text-lg mb-3">WEEKEND</div>
+                            <div class="text-4xl mb-3">🏖️</div>
+                            <h4 class="font-bold text-white text-lg">Liburan Bali</h4>
+                            <p class="text-brand-gold text-sm">GRAND PRIZE</p>
+                            <div class="mt-3 bg-brand-gold/30 rounded-lg py-2">
+                                <span class="text-white font-semibold text-sm">Rp 10.000.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-white/80 text-lg">Geser untuk melihat semua hadiah harian →</p>
+                    <p class="text-brand-gold text-sm mt-2">*Setiap hari hadiah berbeda, jangan sampai terlewat!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 pb-12">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Wheel Section -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                <h3 class="text-2xl font-bold text-white text-center mb-8">Roda Keberuntungan</h3>
+                
+                <div class="relative flex justify-center items-center">
+                    <!-- Wheel Container -->
+                    <div class="relative">
+                        <!-- Pointer -->
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 z-20">
+                            <div class="w-0 h-0 border-l-4 border-r-4 border-b-8 border-l-transparent border-r-transparent border-b-brand-gold"></div>
+                        </div>
+                        
+                        <!-- Wheel -->
+                        <div id="wheel" class="wheel w-80 h-80 rounded-full border-8 border-brand-gold relative overflow-hidden bg-white">
+                            <!-- Prize Segments -->
+                            <div class="prize-segment absolute w-full h-full" style="clip-path: polygon(50% 50%, 50% 0%, 75% 25%);">
+                                <div class="w-full h-full bg-brand-red flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm transform rotate-45 mt-8">Voucher 100K</span>
+                                </div>
+                            </div>
+                            <div class="prize-segment absolute w-full h-full" style="clip-path: polygon(50% 50%, 75% 25%, 100% 50%);">
+                                <div class="w-full h-full bg-brand-gold flex items-center justify-center">
+                                    <span class="text-brand-red font-bold text-sm transform rotate-90 ml-8">Free Dessert</span>
+                                </div>
+                            </div>
+                            <div class="prize-segment absolute w-full h-full" style="clip-path: polygon(50% 50%, 100% 50%, 75% 75%);">
+                                <div class="w-full h-full bg-brand-red flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm transform rotate-135 mb-8">Diskon 50%</span>
+                                </div>
+                            </div>
+                            <div class="prize-segment absolute w-full h-full" style="clip-path: polygon(50% 50%, 75% 75%, 50% 100%);">
+                                <div class="w-full h-full bg-brand-gold flex items-center justify-center">
+                                    <span class="text-brand-red font-bold text-sm transform rotate-180 mb-8">Makan Gratis</span>
+                                </div>
+                            </div>
+                            <div class="prize-segment absolute w-full h-full" style="clip-path: polygon(50% 50%, 50% 100%, 25% 75%);">
+                                <div class="w-full h-full bg-brand-red flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm transform rotate-225 mb-8">Voucher 50K</span>
+                                </div>
+                            </div>
+                            <div class="prize-segment absolute w-full h-full" style="clip-path: polygon(50% 50%, 25% 75%, 0% 50%);">
+                                <div class="w-full h-full bg-brand-gold flex items-center justify-center">
+                                    <span class="text-brand-red font-bold text-sm transform rotate-270 mr-8">Diskon 25%</span>
+                                </div>
+                            </div>
+                            <div class="prize-segment absolute w-full h-full" style="clip-path: polygon(50% 50%, 0% 50%, 25% 25%);">
+                                <div class="w-full h-full bg-brand-red flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm transform rotate-315 mt-8">Free Drink</span>
+                                </div>
+                            </div>
+                            <div class="prize-segment absolute w-full h-full" style="clip-path: polygon(50% 50%, 25% 25%, 50% 0%);">
+                                <div class="w-full h-full bg-brand-gold flex items-center justify-center">
+                                    <span class="text-brand-red font-bold text-sm transform rotate-0 mt-8">Coba Lagi</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Center Circle -->
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full border-4 border-brand-gold flex items-center justify-center z-10">
+                                <span class="text-brand-red font-bold text-xs">SPIN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <button id="spinBtn" class="bg-brand-gold hover:bg-yellow-400 text-brand-red font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg">
+                        🎯 PUTAR SEKARANG!
+                    </button>
+                    <p class="text-white/80 text-sm mt-4">*Minimal pembelian Rp 50.000</p>
+                </div>
+            </div>
+
+            <!-- Timeline & Countdown -->
+            <div class="space-y-8">
+                <!-- Grand Prize Countdown -->
+                <div class="bg-gradient-to-r from-brand-gold to-yellow-400 rounded-3xl p-8 text-brand-red">
+                    <h3 class="text-2xl font-bold text-center mb-4">🏆 GRAND PRIZE</h3>
+                    <div class="text-center mb-6">
+                        <h4 class="text-xl font-bold">Paket Liburan Bali</h4>
+                        <p class="text-sm opacity-80">Senilai Rp 10.000.000</p>
+                    </div>
+                    
+                    <div id="countdown" class="grid grid-cols-4 gap-2 text-center">
+                        <div class="bg-white/20 rounded-lg p-3">
+                            <div id="days" class="text-2xl font-bold">15</div>
+                            <div class="text-xs">Hari</div>
+                        </div>
+                        <div class="bg-white/20 rounded-lg p-3">
+                            <div id="hours" class="text-2xl font-bold">08</div>
+                            <div class="text-xs">Jam</div>
+                        </div>
+                        <div class="bg-white/20 rounded-lg p-3">
+                            <div id="minutes" class="text-2xl font-bold">45</div>
+                            <div class="text-xs">Menit</div>
+                        </div>
+                        <div class="bg-white/20 rounded-lg p-3">
+                            <div id="seconds" class="text-2xl font-bold">30</div>
+                            <div class="text-xs">Detik</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Winners Timeline -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                    <h3 class="text-2xl font-bold text-white text-center mb-6">🎉 Pemenang Terbaru</h3>
+                    
+                    <div class="space-y-4 max-h-80 overflow-y-auto">
+                        <div class="bg-white/10 rounded-lg p-4 border-l-4 border-brand-gold">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-white">Sari Dewi</h4>
+                                    <p class="text-brand-gold font-semibold">Voucher Makan Gratis</p>
+                                    <p class="text-white/70 text-sm">2 jam yang lalu</p>
+                                </div>
+                                <span class="text-2xl">🍽️</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/10 rounded-lg p-4 border-l-4 border-brand-gold">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-white">Ahmad Rizki</h4>
+                                    <p class="text-brand-gold font-semibold">Diskon 50%</p>
+                                    <p class="text-white/70 text-sm">5 jam yang lalu</p>
+                                </div>
+                                <span class="text-2xl">💰</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/10 rounded-lg p-4 border-l-4 border-brand-gold">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-white">Maya Sari</h4>
+                                    <p class="text-brand-gold font-semibold">Voucher 100K</p>
+                                    <p class="text-white/70 text-sm">1 hari yang lalu</p>
+                                </div>
+                                <span class="text-2xl">🎫</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/10 rounded-lg p-4 border-l-4 border-brand-gold">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-white">Budi Santoso</h4>
+                                    <p class="text-brand-gold font-semibold">Free Dessert</p>
+                                    <p class="text-white/70 text-sm">1 hari yang lalu</p>
+                                </div>
+                                <span class="text-2xl">🍰</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Promo & Ordering Section -->
+    <section class="py-12 bg-black/10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">🍽️ Menu Promo & Pemesanan</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Menu Promo -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <span class="mr-3">🔥</span>Menu Promo Hari Ini
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-brand-gold/20 rounded-lg p-4 flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-brand-gold rounded-lg flex items-center justify-center text-2xl">🍛</div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-white">Nasi Gudeg Jogja</h4>
+                                <p class="text-white/70 text-sm">Gudeg ayam + lauk lengkap</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="text-white/50 line-through text-sm">Rp 45.000</span>
+                                    <span class="text-brand-gold font-bold">Rp 35.000</span>
+                                    <span class="bg-brand-red text-white text-xs px-2 py-1 rounded">-22%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-brand-gold/20 rounded-lg p-4 flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-brand-gold rounded-lg flex items-center justify-center text-2xl">🍜</div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-white">Soto Betawi Spesial</h4>
+                                <p class="text-white/70 text-sm">Daging sapi + jeroan + kerupuk</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="text-white/50 line-through text-sm">Rp 38.000</span>
+                                    <span class="text-brand-gold font-bold">Rp 28.000</span>
+                                    <span class="bg-brand-red text-white text-xs px-2 py-1 rounded">-26%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-brand-gold/20 rounded-lg p-4 flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-brand-gold rounded-lg flex items-center justify-center text-2xl">🐟</div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-white">Ikan Bakar Manado</h4>
+                                <p class="text-white/70 text-sm">Ikan kakap + sambal dabu-dabu</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="text-white/50 line-through text-sm">Rp 55.000</span>
+                                    <span class="text-brand-gold font-bold">Rp 42.000</span>
+                                    <span class="bg-brand-red text-white text-xs px-2 py-1 rounded">-24%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-brand-gold/20 rounded-lg p-4 flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-brand-gold rounded-lg flex items-center justify-center text-2xl">🍖</div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-white">Rendang Padang Asli</h4>
+                                <p class="text-white/70 text-sm">Daging sapi + nasi + sayur</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="text-white/50 line-through text-sm">Rp 48.000</span>
+                                    <span class="text-brand-gold font-bold">Rp 38.000</span>
+                                    <span class="bg-brand-red text-white text-xs px-2 py-1 rounded">-21%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-brand-red/20 rounded-lg border border-brand-red/30">
+                        <p class="text-white text-sm text-center">
+                            ⏰ <strong>Promo berlaku sampai 23:59 WIB</strong><br>
+                            💫 Minimal pembelian Rp 50.000 untuk ikut undian
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Pemesanan -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <span class="mr-3">📱</span>Cara Pemesanan
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Online Order -->
+                        <div class="bg-brand-gold/20 rounded-lg p-6">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <span class="mr-2">🛒</span>Pesan Online
+                            </h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="orderWhatsApp()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-all flex items-center justify-center space-x-2">
+                                    <span>📱</span>
+                                    <span>WhatsApp</span>
+                                </button>
+                                <button onclick="orderGoFood()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition-all flex items-center justify-center space-x-2">
+                                    <span>🍔</span>
+                                    <span>GoFood</span>
+                                </button>
+                                <button onclick="orderGrabFood()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition-all flex items-center justify-center space-x-2">
+                                    <span>🛵</span>
+                                    <span>GrabFood</span>
+                                </button>
+                                <button onclick="orderShopeeFood()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all flex items-center justify-center space-x-2">
+                                    <span>🏪</span>
+                                    <span>ShopeeFood</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Dine In -->
+                        <div class="bg-white/10 rounded-lg p-6 border border-white/20">
+                            <h4 class="font-bold text-white mb-4 flex items-center">
+                                <span class="mr-2">🏪</span>Makan di Tempat
+                            </h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-brand-gold">📍</span>
+                                    <span class="text-white text-sm">Jl. Raya Nusantara No. 123, Jakarta</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-brand-gold">⏰</span>
+                                    <span class="text-white text-sm">Buka setiap hari: 08:00 - 22:00 WIB</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-brand-gold">🅿️</span>
+                                    <span class="text-white text-sm">Parkir gratis tersedia</span>
+                                </div>
+                                <button class="w-full bg-brand-gold hover:bg-yellow-400 text-brand-red font-bold py-3 px-4 rounded-lg transition-all mt-4">
+                                    📞 Reservasi Meja: (021) 1234-5678
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Promo Info -->
+                        <div class="bg-gradient-to-r from-brand-red to-red-700 rounded-lg p-6">
+                            <h4 class="font-bold text-white mb-3 flex items-center">
+                                <span class="mr-2">🎁</span>Info Penting
+                            </h4>
+                            <ul class="text-white text-sm space-y-2">
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-brand-gold mt-1">•</span>
+                                    <span>Setiap pembelian min. Rp 50.000 dapat 1x putaran</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-brand-gold mt-1">•</span>
+                                    <span>Berlaku untuk dine-in dan delivery</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-brand-gold mt-1">•</span>
+                                    <span>Hadiah dapat diambil langsung di resto</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-brand-gold mt-1">•</span>
+                                    <span>Promo berlaku sampai stok habis</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/20 backdrop-blur-sm border-t border-white/20 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-8 h-8 bg-brand-gold rounded-full flex items-center justify-center">
+                    <span class="text-brand-red font-bold">🍽️</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">Bekal Nusantara</h3>
+            </div>
+            <p class="text-white/70 mb-4">Cita Rasa Nusantara dalam Setiap Suapan</p>
+            <div class="flex justify-center space-x-6 text-sm text-white/60">
+                <span>📍 Jl. Raya Nusantara No. 123</span>
+                <span>📞 (021) 1234-5678</span>
+                <span>⏰ 08:00 - 22:00 WIB</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Wheel spinning functionality
+        let isSpinning = false;
+        const wheel = document.getElementById('wheel');
+        const spinBtn = document.getElementById('spinBtn');
+        
+        const prizes = [
+            'Voucher 100K', 'Free Dessert', 'Diskon 50%', 'Makan Gratis',
+            'Voucher 50K', 'Diskon 25%', 'Free Drink', 'Coba Lagi'
+        ];
+        
+        spinBtn.addEventListener('click', function() {
+            if (isSpinning) return;
+            
+            isSpinning = true;
+            spinBtn.disabled = true;
+            spinBtn.textContent = '🎯 BERPUTAR...';
+            
+            // Random rotation (multiple full rotations + random angle)
+            const randomRotation = Math.floor(Math.random() * 360) + 1440; // At least 4 full rotations
+            wheel.style.transform = `rotate(${randomRotation}deg)`;
+            
+            setTimeout(() => {
+                const prizeIndex = Math.floor((360 - (randomRotation % 360)) / 45);
+                const wonPrize = prizes[prizeIndex] || prizes[0];
+                
+                // Show prize alert
+                alert(`🎉 Selamat! Anda memenangkan: ${wonPrize}!`);
+                
+                // Add to winners list (simulate)
+                addNewWinner('Anda', wonPrize);
+                
+                isSpinning = false;
+                spinBtn.disabled = false;
+                spinBtn.textContent = '🎯 PUTAR LAGI!';
+            }, 3000);
+        });
+        
+        // Add new winner to timeline
+        function addNewWinner(name, prize) {
+            const winnersContainer = document.querySelector('.space-y-4.max-h-80');
+            const newWinner = document.createElement('div');
+            newWinner.className = 'bg-white/10 rounded-lg p-4 border-l-4 border-brand-gold';
+            newWinner.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h4 class="font-bold text-white">${name}</h4>
+                        <p class="text-brand-gold font-semibold">${prize}</p>
+                        <p class="text-white/70 text-sm">Baru saja</p>
+                    </div>
+                    <span class="text-2xl">🎉</span>
+                </div>
+            `;
+            winnersContainer.insertBefore(newWinner, winnersContainer.firstChild);
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 15);
+            targetDate.setHours(23, 59, 59, 999);
+            
+            const now = new Date().getTime();
+            const distance = targetDate.getTime() - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="col-span-4 text-center text-xl font-bold">GRAND PRIZE BERAKHIR!</div>';
+            }
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Order functions
+        function orderWhatsApp() {
+            const message = "Halo Bekal Nusantara! Saya ingin memesan makanan dan ikut undian berhadiah. Mohon info menu yang tersedia.";
+            const phoneNumber = "6281234567890"; // Replace with actual WhatsApp number
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+        
+        function orderGoFood() {
+            alert('🍔 Segera buka aplikasi GoFood dan cari "Bekal Nusantara" untuk memesan!\n\n💡 Jangan lupa minimal pembelian Rp 50.000 untuk ikut undian berhadiah!');
+        }
+        
+        function orderGrabFood() {
+            alert('🛵 Segera buka aplikasi GrabFood dan cari "Bekal Nusantara" untuk memesan!\n\n💡 Jangan lupa minimal pembelian Rp 50.000 untuk ikut undian berhadiah!');
+        }
+        
+        function orderShopeeFood() {
+            alert('🏪 Segera buka aplikasi ShopeeFood dan cari "Bekal Nusantara" untuk memesan!\n\n💡 Jangan lupa minimal pembelian Rp 50.000 untuk ikut undian berhadiah!');
+        }
+        
+        // Add some interactive animations
+        document.querySelectorAll('.bg-white\\/10').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97cc6a1cc284a082',t:'MTc1NzQ4MDk4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
